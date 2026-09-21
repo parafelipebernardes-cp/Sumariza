@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sumarização: Percorrendo a casa</title>
+<style>
+:root{--bg:#f6f7f7;--card:#fff;--fg:#14181b;--mut:#5f6b70;--line:#dde2e4;--acc:#1f5f5b;--accfg:#fff;--err:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111416;--card:#191d20;--fg:#eceff0;--mut:#93a0a5;--line:#2a3236;--acc:#5fb3ad;--accfg:#0d1a19;--err:#f2938c}}
+:root[data-theme="dark"]{--bg:#111416;--card:#191d20;--fg:#eceff0;--mut:#93a0a5;--line:#2a3236;--acc:#5fb3ad;--accfg:#0d1a19;--err:#f2938c}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:680px;margin:0 auto;padding:28px 18px 64px}
+h1{font:600 1.5rem/1.25 Georgia,"Times New Roman",serif;margin:0 0 6px}
+h2{font-size:1rem;font-weight:600;margin:0 0 10px}
+.sub{color:var(--mut);margin:0 0 28px}
+section{margin-bottom:28px}
+label{display:block;font-size:.9rem;color:var(--mut);margin-bottom:4px}
+input[type=text],textarea{width:100%;padding:11px 12px;font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:8px}
+input:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+textarea{min-height:240px;resize:vertical;line-height:1.55}
+.row{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:999px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+#outro{margin-top:10px;display:none}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+summary{cursor:pointer;font-weight:600}
+.orig{font:1rem/1.7 Georgia,"Times New Roman",serif;margin-top:12px}
+.orig p{margin:0 0 .7em}
+.orig small{color:var(--mut);font:.8rem/1.4 system-ui,sans-serif;display:block;margin-top:10px}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.85rem;margin-top:6px}
+.btn{padding:11px 18px;font:inherit;font-weight:600;color:var(--accfg);background:var(--acc);border:0;border-radius:8px;cursor:pointer}
+.btn.sec{color:var(--fg);background:var(--card);border:1px solid var(--line);font-weight:500}
+.err{color:var(--err);min-height:1.4em;margin:10px 0 0;font-size:.92rem}
+#ficha{display:none;border-top:1px solid var(--line);padding-top:24px}
+#ficha textarea{min-height:300px;font:.9rem/1.5 ui-monospace,Menlo,Consolas,monospace}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.ok{color:var(--acc);margin:10px 0 0;min-height:1.4em;font-size:.92rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Percorrendo a casa</h1>
+  <p class="sub">Leia o texto e reescreva-o do ponto de vista de um foco. Mantenha só o que importa para quem olha a casa desse jeito.</p>
+
+  <section>
+    <h2>Seus dados</h2>
+    <div class="row">
+      <div><label for="nome">Nome completo</label><input id="nome" type="text" autocomplete="name"></div>
+      <div><label for="turma">Turma</label><input id="turma" type="text" placeholder="ex.: 92"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Texto original</h2>
+    <details>
+      <summary>Abrir texto</summary>
+      <div class="orig">
+        <p>Os dois garotos correram até a entrada da casa.</p>
+        <p>- Veja, eu disse a você que hoje era um bom dia para brincar aqui – disse Eduardo. – Mamãe nunca está em casa na quinta-feira – acrescentou.</p>
+        <p>Altos arbustos escondiam a entrada da casa; os meninos podiam correr no jardim extremamente bem cuidado.</p>
+        <p>- Eu não sabia que sua casa era tão grande – disse Marcos.</p>
+        <p>- É, mas ela está mais bonita agora, desde que meu pai mandou revestir com pedras essa parede lateral e colocou uma lareira.</p>
+        <p>Havia portas na frente e atrás e uma porta lateral que levava à garagem, que estava vazia, exceto pelas três bicicletas com marcha guardadas aí.</p>
+        <p>Eles entraram pela porta lateral. Eduardo explicou que ela ficava sempre aberta para suas irmãs mais novas entrarem e saírem sem dificuldade.</p>
+        <p>Marcos queria ver a casa... então, Eduardo começou a mostrá-la pela sala de estar. Estava recém-pintada, como o resto do primeiro andar. Eduardo ligou o som: o barulho preocupou Marcos.</p>
+        <p>- Não se preocupe, a casa mais próxima está a meio quilômetro daqui. – gritou Eduardo. Marcos se sentiu mais confortável ao observar que nenhuma casa podia ser vista em qualquer direção além do enorme jardim.</p>
+        <p>A sala de jantar, com toda a porcelana, pratas e cristais, não era lugar para brincar: os garotos foram para a cozinha, onde fizeram um lanche.</p>
+        <p>Eduardo disse que não era para usar o lavabo, porque ele ficara úmido e mofado, uma vez que o encanamento arrebentara.</p>
+        <p>- Aqui é onde meu pai guarda suas coleções de selos e moedas raras – disse Eduardo, enquanto eles davam uma olhada no escritório. Além do escritório, havia três quartos no andar superior da casa.</p>
+        <p>Eduardo mostrou a Marcos o <em>closet</em> de sua mãe cheio de roupas e o cofre trancado onde havia joias. O quarto de suas irmãs não era tão interessante, exceto pela televisão com o Atari. Eduardo comentou que o melhor de tudo era que o banheiro do corredor era seu, desde que um outro fora construído no quarto de suas irmãs. Não era tão bonito como o de seus pais, que estava revestido de mármore, mas para ele era a melhor coisa do mundo.</p>
+        <small>Traduzido e adaptado de J. Pitchert &amp; R. Anderson. “Taking different perspective on a story”, Journal of Psychology, 1977, 69, In: A. Kleiman. 1989. Texto e leitor, Pontes Editores, Campinas.</small>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>Escolha seu foco</h2>
+    <div class="chips" id="chips"></div>
+    <input id="outro" type="text" placeholder="Qual é o foco?" aria-label="Outro foco">
+  </section>
+
+  <section>
+    <h2>Sua versão do texto</h2>
+    <textarea id="texto" aria-label="Sua versão do texto" placeholder="Reescreva o texto com as informações que importam para o seu foco."></textarea>
+    <div class="meta"><span id="palavras">0 palavras</span><span>mínimo: 30</span></div>
+    <p class="err" id="erro" role="alert"></p>
+    <button class="btn" id="gerar" type="button">Gerar ficha de entrega</button>
+  </section>
+
+  <section id="ficha">
+    <h2>Ficha de entrega</h2>
+    <p class="sub" style="margin-bottom:12px">Confira e envie ao professor. A data e a hora servem como registro de presença.</p>
+    <textarea id="saida" readonly aria-label="Ficha de entrega"></textarea>
+    <div class="actions">
+      <button class="btn" id="copiar" type="button">Copiar ficha</button>
+      <button class="btn sec" id="baixar" type="button" hidden>Baixar arquivo</button>
+      <button class="btn sec" id="editar" type="button">Voltar e editar</button>
+    </div>
+    <p class="ok" id="ok" role="status"></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var FOCOS=["Ladrão","Corretor de imóveis","Policial","Comprador da casa","Dedetizador","Outro"];
+  var $=function(i){return document.getElementById(i)};
+  var foco="";
+  var chips=$("chips");
+
+  FOCOS.forEach(function(f){
+    var b=document.createElement("button");
+    b.type="button";b.className="chip";b.textContent=f;b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){
+      foco=f;
+      Array.prototype.forEach.call(chips.children,function(c){c.setAttribute("aria-pressed",c===b?"true":"false")});
+      $("outro").style.display=f==="Outro"?"block":"none";
+      if(f==="Outro")$("outro").focus();
+    });
+    chips.appendChild(b);
+  });
+
+  function contar(s){var t=s.trim();return t?t.split(/\s+/).length:0}
+  $("texto").addEventListener("input",function(){
+    var n=contar(this.value);$("palavras").textContent=n+(n===1?" palavra":" palavras");
+  });
+
+  function focoFinal(){return foco==="Outro"?$("outro").value.trim():foco}
+  function pad(n){return n<10?"0"+n:""+n}
+  function agora(){
+    var d=new Date();
+    return pad(d.getDate())+"/"+pad(d.getMonth()+1)+"/"+d.getFullYear()+" às "+pad(d.getHours())+":"+pad(d.getMinutes());
+  }
+  var ultimaFicha="",ultimoNome="";
+
+  $("gerar").addEventListener("click",function(){
+    var nome=$("nome").value.trim(),turma=$("turma").value.trim(),f=focoFinal(),t=$("texto").value.trim(),e=$("erro");
+    e.textContent="";
+    if(!nome){e.textContent="Escreva seu nome completo.";$("nome").focus();return}
+    if(!f){e.textContent="Escolha um foco.";return}
+    if(contar(t)<30){e.textContent="Sua versão ainda está curta. Escreva pelo menos 30 palavras.";$("texto").focus();return}
+    ultimoNome=nome;
+    ultimaFicha=[
+      "SUMARIZAÇÃO: PERCORRENDO A CASA",
+      "",
+      "Nome: "+nome,
+      "Turma: "+(turma||"não informada"),
+      "Foco: "+f,
+      "Entregue em: "+agora(),
+      "",
+      "VERSÃO DO ALUNO",
+      "",
+      t
+    ].join("\n");
+    $("saida").value=ultimaFicha;
+    $("ficha").style.display="block";
+    $("ok").textContent="";
+    $("ficha").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  $("editar").addEventListener("click",function(){
+    $("ficha").style.display="none";
+    $("texto").scrollIntoView({behavior:"smooth",block:"center"});
+  });
+
+  $("copiar").addEventListener("click",function(){
+    var ok=function(){$("ok").textContent="Ficha copiada. Cole na mensagem ao professor."};
+    var fallback=function(){
+      var s=$("saida");s.focus();s.select();
+      try{document.execCommand("copy")?ok():($("ok").textContent="Selecione o texto acima e copie manualmente.")}
+      catch(x){$("ok").textContent="Selecione o texto acima e copie manualmente."}
+    };
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ultimaFicha).then(ok,fallback)}
+      else fallback();
+    }catch(x){fallback()}
+  });
+
+  var dl=null;
+  if(window.claude&&window.claude.use){
+    window.claude.use("downloads").then(function(d){
+      if(d){dl=d;$("baixar").hidden=false}
+    }).catch(function(){});
+  }
+  $("baixar").addEventListener("click",function(){
+    if(!dl)return;
+    var arq="Sumarizacao - "+ultimoNome.replace(/[\\\/:*?"<>|]/g,"")+".txt";
+    dl.save({filename:arq,data:ultimaFicha}).then(function(){
+      $("ok").textContent="Arquivo salvo."
+    }).catch(function(x){
+      if(!x||x.code!=="declined")$("ok").textContent="Não foi possível baixar. Use Copiar ficha."
+    });
+  });
+})();
+</script>
+</body>
+</html>
